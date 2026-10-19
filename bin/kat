@@ -1,0 +1,57 @@
+#!/bin/bash
+set -e
+
+# Welcome to kat.
+# kat is the manager for katana's things, such as declarativity, etc.
+# author: tspillow (License: GPL v2.0)
+# ----------------------------------------------------------------------
+
+LIB_DIR="/usr/lib/kat/"
+CONFIG="/katana/declare/config.lua"
+LIB_MAIN="/usr/lib/kat/main.lua"
+STOCK_CONFIG="/usr/share/katana/config.lua"
+HELP="usage: kat rebuild|reset-config|update|help"
+
+# show help if there are no arguments
+if [ -z "$1" ]; then
+   echo $HELP
+   exit 1
+fi
+
+# define what which argument does
+case "$1" in
+	rebuild)
+		echo "Rebuilding..."
+		lua $LIB_MAIN
+		;;
+	reset-config)
+		read -r -p "This will change your config back to the Katana 
+		stock config. Are you sure? [Y/n] " response
+		
+		case "$response" in
+		    [yY][eE][sS]|[yY])
+			rm -rf $CONFIG
+			sudo cp $STOCK_CONFIG $CONFIG
+			echo "[SUCCESS] Done."
+			;;
+		*)
+			echo "Aborted."
+			exit 1
+			;;
+		esac
+		;;
+	update)
+		yay
+		;;
+	help)
+		echo $HELP
+		;;
+	version)
+		echo "kat 0.1"
+		exit 1
+		;;
+	*)
+		echo "Specify something."
+		echo $HELP
+		;;
+esac
