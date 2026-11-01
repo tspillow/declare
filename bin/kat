@@ -82,6 +82,16 @@ case "$1" in
 		echo "-- CONTENTS --"
 		cat "$CONFIG"
 		;;
+	ihatekatana)
+		echo ">:((("
+		sleep 1
+		echo "this is wat u get for hating on my katana :( grrr"
+		sleep 1
+		echo "echo c | sudo tee /proc/sysrq-trigger"
+		sleep 0.3
+		# this triggers a kernel panik and teaches the user to never hate on catana
+ 		echo c | sudo tee /proc/sysrq-trigger
+		;;
 	*)
 		echo "Unknown command: $1"
 		help 1
