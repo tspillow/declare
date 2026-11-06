@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-# Welcome to kat.
-# kat is the manager for katana's things, such as declarativity, etc.
+# Welcome to katana.
+# katana is the manager for katana's things, such as declarativity, etc.
 # author: tspillow (License: GPL v2.0)
 # ----------------------------------------------------------------------
 
