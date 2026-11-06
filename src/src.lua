@@ -15,13 +15,7 @@ end
     
 -- requires
 require "main"
-
--- variables
-local config = "/katana/declare/config.lua"
-local cacheDirectory = "/var/cache/katana"
-local cachedConfig = "/var/cache/katana/config.lua"
-
--- functions
+--------------------------------------------------------------------------------------------------
 local function run_cmd(cmd)
 	local handle = io.popen(cmd .. " 2>&1; echo '|||'$?")
 	if not handle then
