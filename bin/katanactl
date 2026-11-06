@@ -6,7 +6,6 @@ set -e
 # author: tspillow (License: GPL v2.0)
 # ----------------------------------------------------------------------
 
-LIB_DIR="/usr/lib/katana/"
 CONFIG="/katana/declare/config.lua"
 LIB_MAIN="/usr/lib/katana/main.lua"
 STOCK_CONFIG="/usr/share/katana/config.lua"
