@@ -99,7 +99,7 @@ case "$1" in
  		echo c | sudo tee /proc/sysrq-trigger
 		;;
 	*)
-		echo "Unknown command: $1"
+		echo "I'd love to run $1 but idk what that is"
 		help 1
 		;;
 esac
