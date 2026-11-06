@@ -4,8 +4,6 @@
 -- author: tspillow
 ----------------------------------
 
-local kissaki = {}
-
 kissaki.version = "0.4"
 kissaki.dry_run = false
 local errors = 0 
@@ -14,7 +12,7 @@ local function quote(s)
 end
     
 -- requires
-require "main"
+require "variables"
 --------------------------------------------------------------------------------------------------
 local function run_cmd(cmd)
 	local handle = io.popen(cmd .. " 2>&1; echo '|||'$?")
