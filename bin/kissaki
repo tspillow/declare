@@ -83,7 +83,7 @@ case "$1" in
 		help 0
 		;;
 	version)
-		echo "kissaki 0.4"
+		echo "kissaki 0.4.2"
 		;;
 	backup-config)
 		echo "Backing up..."
@@ -93,6 +93,7 @@ case "$1" in
 		;;
 	restore-backup)
 		echo "Restoring..."
+		sudo rm -rf "$CONFIG"
 		sudo mv "$BACKUP_CONFIG" "$CONFIG"
 		echo "[SUCCESS] Done."
 		;;
