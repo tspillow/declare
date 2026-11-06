@@ -71,7 +71,7 @@ case "$1" in
 		help 0
 		;;
 	version)
-		echo "kat 0.2.1"
+		echo "katanactl 0.1.0"
 		;;
 	backup-config)
 		echo "Backing up..."
