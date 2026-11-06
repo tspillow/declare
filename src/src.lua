@@ -3,16 +3,15 @@
 ---(
 -- author: tspillow
 ----------------------------------
-
+------ requires
+require "variables"
+------ some definitions
 kissaki.version = "0.4"
 kissaki.dry_run = false
 local errors = 0 
 local function quote(s)
   return "'" .. (tostring(s):gsub("'', "'\\''")) .. "'"
 end
-    
--- requires
-require "variables"
 --------------------------------------------------------------------------------------------------
 local function run_cmd(cmd)
 	local handle = io.popen(cmd .. " 2>&1; echo '|||'$?")
