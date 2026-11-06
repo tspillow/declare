@@ -1,5 +1,6 @@
 local variables = {}
 
-local config = "/katana/declare/config.lua"
-local cacheDirectory = "/var/cache/katana"
-local cachedConfigDir = "/var/cache/katana/config.lua"
+-- variables (or headers) for main.lua
+local src = dofile("/usr/lib/katana/src.lua")
+local config = dofile("/katana/declare/config.lua")
+local dry_run = false
