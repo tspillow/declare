@@ -1,30 +1,29 @@
 #!/bin/bash
 set -e
 
-# Welcome to katana.
-# katana is the manager for katana's things, such as declarativity, etc.
+# Welcome to kissaki.
+# Kissaki is the declarative system for Katana Linux
 # author: tspillow (License: GPL v2.0)
 # ----------------------------------------------------------------------
 
-CONFIG="/katana/declare/config.lua"
-LIB_MAIN="/usr/lib/katana/main.lua"
-STOCK_CONFIG="/usr/share/katana/config.lua"
-BACKUP_CONFIG="/katana/declare/backups/katanaBackup.lua.bak"
+LIB_DIR="/usr/lib/kissaki/"
+CONFIG="/etc/kissaki/configuration.lua"
+LIB_MAIN="/usr/lib/kissaki/main.lua"
+STOCK_CONFIG="/usr/share/kissaki/config.lua"
+BACKUP_CONFIG="/etc/kissaki/backups/configuration.lua.bak"
 
 help() {
 	cat <<EOF
-katanactl: Katana Linux command line tool
+kissaki - Katana Linux's declarative system
 
-Usage: katanactl <command>
+Usage: kissaki <command>
 
 Commands:
   rebuild          applies the config's changes (add --dry-run to preview)
   reset-config     reset the config back to stock
   backup-config    backup the config in a specialized folder
   restore-backup   use the backup as your main config
-  update           update the entire system, including AUR packages
-  config           show the config's contents and more info
-  version          show kat's current version
+  version          show kissaki's current version
   help             show everything you're seeing right now
 EOF
 	exit "${1:-0}"
@@ -37,7 +36,22 @@ fi
 
 # need sudo
 if [ $EUID -ne 0 ]; then
-	echo "No."
+	quotes=(
+	   "What's the magic word?"
+	   "Ever heard of sudo?"
+	   "No."
+	   "Hey, $USER. Did you know you can use sudo?"
+	   "Error: OPSEC = Activated, so you need to run this with root privileges!"
+	   "Are you kidding me?"
+	   "What do you think?"
+	   "PARRY."
+            "It's like letting a 5 year old play with fire."
+	   "I'm afraid you don't know that things like this need permission"
+	   "Good try."
+	   "What is the type of person that uses kissaki $1 without sudo?"
+	)
+	rand_idx=$((RANDOM % ${#quotes[@]}))
+        echo "${quotes[$rand_idx]}"
 	exit 1
 fi
 
@@ -54,7 +68,6 @@ case "$1" in
 			[yY][eE][sS]|[yY])
 				sudo rm -rf "$CONFIG"
 				sudo cp "$STOCK_CONFIG" "$CONFIG"
-				sudo chown -R $USER:$USER /katana/declare/config.lua
 				echo "[SUCCESS] Done."
 				;;
 			*)
@@ -70,7 +83,7 @@ case "$1" in
 		help 0
 		;;
 	version)
-		echo "katanactl 0.1.0"
+		echo "kissaki 0.4"
 		;;
 	backup-config)
 		echo "Backing up..."
@@ -84,7 +97,7 @@ case "$1" in
 		echo "[SUCCESS] Done."
 		;;
 	config)
-		echo "/katana/declare/config.lua - Katana configuration file(..?)"
+		echo "$CONFIG - Kissaki configuration file"
 		echo "-- CONTENTS --"
 		cat "$CONFIG"
 		;;
@@ -98,7 +111,7 @@ case "$1" in
  		echo c | sudo tee /proc/sysrq-trigger
 		;;
 	*)
-		echo "I'd love to run $1 but idk what that is"
+		echo "$1? What's that? A dog whistle?"
 		help 1
 		;;
 esac
